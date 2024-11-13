@@ -11,7 +11,7 @@
         <groupId>org.springframework.boot</groupId>
         <artifactId>spring-boot-starter-parent</artifactId>
         <version>3.3.5</version>
-        <relativePath/> <!-- lookup parent from repository -->
+        <relativePath/>
     </parent>
 
     <properties>
@@ -24,7 +24,7 @@
         <liquibase-spanner.version>4.29.2.1</liquibase-spanner.version>
 
         <google-cloud-spanner-jdbc.version>2.6.0</google-cloud-spanner-jdbc.version>
-        <google-cloud-spanner-jdbc.version.version>6.81.0</google-cloud-spanner-jdbc.version.version>
+        <google-cloud-spanner.version>6.81.0</google-cloud-spanner.version>
 
         <testcontainers.version>1.20.3</testcontainers.version>
         <testcontainers-spanner.version>2.6.0</testcontainers-spanner.version>
@@ -79,7 +79,7 @@
         <dependency>
             <groupId>com.google.cloud</groupId>
             <artifactId>google-cloud-spanner</artifactId>
-            <version>${google-cloud-spanner-jdbc.version}</version>
+            <version>${google-cloud-spanner.version}</version>
         </dependency>
         <dependency>
             <groupId>org.postgresql</groupId>
@@ -114,20 +114,8 @@
     <build>
         <plugins>
             <plugin>
-                <groupId>org.liquibase</groupId>
-                <artifactId>liquibase-maven-plugin</artifactId>
-                <version>4.10.0</version>
-                <dependencies>
-                    <dependency>
-                        <groupId>com.google.cloud</groupId>
-                        <artifactId>google-cloud-spanner</artifactId>
-                        <version>6.0.0</version>
-                    </dependency>
-                </dependencies>
-                <configuration>
-                    <url>jdbc:cloudspanner:/projects/stay-post-booking-bots/instances/test-instance/databases/cs_operational</url>
-                    <driver>com.google.cloud.spanner.jdbc.JdbcDriver</driver>
-                </configuration>
+                <groupId>org.springframework.boot</groupId>
+                <artifactId>spring-boot-maven-plugin</artifactId>
             </plugin>
         </plugins>
     </build>
