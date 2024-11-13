@@ -1,0 +1,21 @@
+<databaseChangeLog xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+                   xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+                   xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-3.1.xsd">
+    <changeSet id="1" author="andre.rezende">
+        <preConditions onFail="MARK_RAN">
+            <not>
+                <tableExists tableName="BATCH_EXECUTION"/>
+                <tableExists tableName="PROCESSED_LISTING_STATUS"/>
+                <tableExists tableName="PROCESSED_LISTING"/>
+            </not>
+        </preConditions>
+        <comment>Create BATCH_EXECUTION, PROCESSED_LISTING_STATUS, and PROCESSED_LISTING</comment>
+        <sql dbms="cloudspanner">
+            CREATE TABLE IF NOT EXISTS `STATUS_TABLE`(
+                                                                   ID INT64 NOT NULL,
+                                                                   NAME STRING(30) NOT NULL
+            ) PRIMARY KEY (ID);
+       </sql>
+    </changeSet>
+
+</databaseChangeLog>

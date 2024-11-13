@@ -1,0 +1,11 @@
+<databaseChangeLog xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+                   xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+                   xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-3.1.xsd">
+    <changeSet id="1" author="andre.rezende">
+        <comment>Insert Status</comment>
+        <sql dbms="cloudspanner">
+            INSERT INTO `STATUS_TABLE` (ID,NAME) VALUES (1,'TO DO'),(2,'IN PROGRESS'),(3,'DONE');
+        </sql>
+    </changeSet>
+
+</databaseChangeLog>
